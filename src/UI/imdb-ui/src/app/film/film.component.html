@@ -1,0 +1,25 @@
+<h2>Add Film</h2>
+<form [formGroup]="filmForm" (ngSubmit)="onSubmit()">
+    <div class="form-group"> 
+        <label for="filmName">Film Name</label>
+        <input type="text" formControlName="filmName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.filmName.errors }" />
+        <div *ngIf="submitted && f.filmName.errors" class="invalid-feedback">
+            <div *ngIf="f.filmName.errors.required">Film Name is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="language">Language</label>
+        <input type="text" formControlName="language" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.language.errors }" />
+        <div *ngIf="submitted && f.language.errors" class="invalid-feedback">
+            <div *ngIf="f.language.errors.required">Language is required</div>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Add Film
+        </button>
+        <a routerLink="/login" class="btn btn-link">Cancel</a>
+    </div>
+</form>
